@@ -1,0 +1,133 @@
+ ###########################################################
+# import es usado para importar modulos, clases, objeto o funciones #
+#############################################################
+
+Mudulo: database.py
+	clase: Database
+
+Mudulo: alumnos.py
+Necesita instanciar la clase Database
+
+
+#######################################
+# D E C L A R A C I O N   I M P O R T #
+#######################################
+
+alumnos.py
+#import [modulo]
+
+#    IMPOR DE MODULOS
+#-----> Acceder a 
+import database
+
+  #  (modulo) (Clase) #
+#----> USO:
+db = database.Database()
+
+
+
+
+### IMPORT DE CLASES
+
+  #  (modulo)        (Clase) #
+from database impor Database
+
+#----> USO:
+db = Database()
+
+
+#   IMPORT CON ALIAS
+from database import Databse as DB
+#----> USO:
+db = DB()
+
+
+#    IMPORT MULTIPLE
+###  (Modulo)       ( C l a s e s )
+from databse import Database, Tabla
+
+
+------------------ PAQUETES --------------------
+
+
+agregar un archivo vacio llamado: __init__.py
+
+
+
+===============   EVITAR QUE SE EJEUTEN MODULOS:
+	crear una funcion main()   <---- Se ejecua como SCRIPT
+
+
+class ClaseUtil:
+	'''Esta clase puede ser util para otros moldulos'''
+	pass
+
+
+	def main():
+	''' crea una clase util y haz algo con ella para el módulo'''
+		util = ClaseUtil()
+		print(util)
+
+## Variables especiales (__)
+## Este metodo se ejecutara cuando se le llame como programa y no cuando sea importado
+	if __name__ == "__main__":
+		main()
+
+##Cuando el modulo es ejecutado DIRECTAMETE con python3 modulo.py no es importado
+
+
+las clases pueden ir en funciones:
+El alcance es solo para la función
+
+def formato_string(strin, formatter=None):
+	class DefaultFormatter:
+		def format(self, string)_
+			return str(string).title()
+
+	if not formatter:
+		formatter = DefaultFormatter()
+
+	return formatter.format(string)
+
+
+
+--------------------- CONTROL DE ACCESO
+Todos los metodos son públicos:
+__ <----NAME MANGLIN : Mutilado de nombre, solo al inicio
+	#****** python agrega _ al nombre de la clase internamente al hacer us del NAME MANGLING, para metodos fuera de la clase, para metodos dentro de la clase lo hace automaticamente
+
+class StringSecreto:
+	
+	def __init__(self, string_plano, frase_pass):
+		self.__string_plano = string_plano
+		self.__frase_pass = frase_pass
+
+	def decript(self, frase_pass):
+		if self.__frase_pass == frase_pass:
+			return self.__string_plano
+		else:
+			return 'Verifique su clave'
+
+string_secreto = StringSecreto("Frase secrete","clave")
+
+print(string_secreto.decript("clave"))
+print(string_secreto.decript("clabe"))
+
+#----> Saltar el sistema
+print("HACKED: ",string_secreto._StringSecreto__string_plano)
+
+
+
+
+
+
+IMPORT DESDE PAQUETES:
+
+el archivo __init__.py debe Contener declaracion de variables o clases
+escolar/__init__.py
+	from .database import db
+
+#----> import de paquete:
+from escolar import db
+
+
